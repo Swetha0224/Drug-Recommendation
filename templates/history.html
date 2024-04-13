@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User History</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(180deg, #ffffff, #A7C7E7);
+            height: 100vh;
+            background-repeat: no-repeat;
+            
+        }
+         .navbar1 {
+            margin-top: 24px;
+            overflow: hidden;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            margin-bottom: 110px;
+        }
+
+        .navbar1 h1 {
+            margin: 0;
+            color: black;
+            margin-left: 90px;
+            font-size: 45px;
+        }
+
+        .navbar1 ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            margin-right: 111px;
+            font-size: 20px;
+        }
+
+        .navbar1 ul li {
+            margin-left: 20px;
+        }
+
+        .navbar1 ul li:first-child {
+            margin-left: 0;
+        }
+
+        .navbar1 ul li a {
+            color: black;
+            text-decoration: none;
+            margin: 15px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar1 navbar navbar-expand-lg navbar-light bg-light">
+        <h1 class="navbar-brand">MCPDR</h1>
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="/">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/about">About</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/predict1">Predict</a>
+            </li>
+            {% if 'user_id' in session %}
+            <li class="nav-item">
+                <a class="nav-link" href="/logout">Logout</a>
+            </li>
+            {% else %}
+            <li class="nav-item">
+                <a class="nav-link" href="/login_validation">Login</a>
+            </li>
+            {% endif %}
+        </ul>
+    </nav>
+    <div class="container">
+        <h1 class="mb-4">History of {{ username }}</h1>
+        <table class="table table-bordered">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Raw Text</th>
+                    <th>Clean Text</th>
+                    <th>Result</th>
+                    <th>Top Drugs</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in data_items %}
+                <tr>
+                    <td>{{ item.rawtext }}</td>
+                    <td>{{ item.rawtext1 }}</td>
+                    <td>{{ item.result }}</td>
+                    <td>{{ item.top_drugs | join(", ") }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <!-- Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

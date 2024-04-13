@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(180deg,  #ffffff,#A7C7E7);
+            height: 100vh;
+            background-repeat: no-repeat;
+            overflow: hidden; 
+        }
+         .navbar1 {
+            margin-top: 24px;
+            overflow: hidden;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            margin-bottom: 110px;
+        }
+
+        .navbar1 h1 {
+            margin: 0;
+            color: black;
+            margin-left: 90px;
+            font-size: 45px;
+        }
+
+        .navbar1 ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            margin-right: 111px;
+            font-size: 20px;
+        }
+
+        .navbar1 ul li {
+            margin-left: 20px;
+        }
+
+        .navbar1 ul li:first-child {
+            margin-left: 0;
+        }
+
+        .navbar1 ul li a {
+            color: black;
+            text-decoration: none;
+            margin: 15px;
+        }
+
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            margin-top: 33px;
+        }
+
+        .content {
+            margin-bottom: 90px;
+            flex: 1;
+            max-width: 600px;
+            margin-right: 50px;
+        }
+
+        .content h1 {
+            margin-bottom:60px;
+            color: #333;
+            font-size: 50px;
+        }
+
+        .content p {
+            color: #555;
+            font-size: 20px;
+        }
+
+        img {
+            margin-left: 50px;
+            width: 500px;
+            height: 450px;
+            border-radius: 10px;
+        }
+        .slideshow-container {
+            position: relative;
+            margin-left: 110px;
+        }
+
+        .mySlides {
+            display: none;
+        }
+
+        /* Position the "next button" to the right */
+        .next {
+            right: 0;
+            border-radius: 3px 0 0 3px;
+        }
+
+        /* On hover, add a black background color with a little bit see-through */
+        .prev:hover, .next:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        /* Caption text */
+        .text {
+            color: #f2f2f2;
+            font-size: 15px;
+            padding: 8px 12px;
+            position: absolute;
+            bottom: 8px;
+            width: 100%;
+            text-align: center;
+        }
+
+        /* Number text (1/3 etc) */
+        .numbertext {
+            color: #f2f2f2;
+            font-size: 12px;
+            padding: 8px 12px;
+            position: absolute;
+            top: 0;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar1">
+        <h1>MCPDR</h1>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/about">About</a></li>
+            <li><a href="/predict1">Predict</a></li>
+            {% if 'user_id' in session %}
+            <li><a href="/logout">Logout</a></li>
+        {% else %}
+            <li><a href="/login_validation">Login</a></li>
+        {% endif %}
+        </ul>
+    </nav>
+    <div class="container" >
+        <div class="slideshow-container">
+            <div class="mySlides fade">
+                <img src="static/image/3.jpeg">
+            </div>
+        
+            <div class="mySlides fade">
+                <img src="static/image/1.jpeg">
+            </div>
+        
+            <div class="mySlides fade">
+                <img src="static/image/2.jpeg">
+            </div>
+        </div>        
+        <div class="content">
+            <h1>Welcome to our website</h1>
+            <p>AI-based Drug recommendation systems are rapidly becoming more important in the field of healthcare. With vast amounts of medical data and research available, it can be challenging for healthcare professionals to stay up-to-date with the latest treatments and medications.<br><br>
+
+                AI-powered drug recommendation systems can provide valuable assistance to healthcare professionals in making more informed decisions regarding the best course of treatment for their patients.</p>
+        </div>
+        
+    </div>
+    <script>
+        var slideIndex = 0;
+        showSlides();
+    
+        function showSlides() {
+            var i;
+            var slides = document.getElementsByClassName("mySlides");
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            slideIndex++;
+            if (slideIndex > slides.length) {
+                slideIndex = 1;
+            }
+            slides[slideIndex - 1].style.display = "block";
+            setTimeout(showSlides, 2500); // Change image every 2 seconds
+        }
+    
+        function plusSlides(n) {
+            showSlides(slideIndex += n);
+        }
+    </script>
+    
+</body>
+</html>

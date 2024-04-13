@@ -1,0 +1,61 @@
+{% extends "home.html" %}
+{% block content %}
+<div class="container">
+    <div class="row mb-4">
+        <div class="col-md-6">
+            <div class="card text-center p-3">
+                <div class="card-header">
+                    <strong>Original Entered Review:</strong>
+                </div>
+                <div class="card-body">
+                    <p id="new" class="card-text">{{ rawtext }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card text-center p-3">
+                <div class="card-header">
+                    <strong>Clean Review</strong>
+                </div>
+                <div class="card-body">
+                    <p id="new" class="card-text">{{ rawtext1 }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card text-center mb-4">
+        <div class="card-header">
+            <strong>Predicted Medical Condition</strong>
+        </div>
+        <div class="card-body">
+            <p id="new" class="card-text">{{ result }}</p>
+        </div>
+    </div>
+
+    <div class="card text-center">
+        <div class="card-header">
+            <strong><i class="fas fa-file-export"></i> Top 3 Recommended Drugs:</strong>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <tr>
+                        {% for top_drug in top_drugs %}
+                        <td>
+                            <p class="round1">{{ top_drug }}</p>
+                        </td>
+                        {% endfor %}
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="text-center mt-4">
+        <p class="font-weight-bold">Not Sure Which Doctor to Consult?</p>
+        <p>We are Here to Help!</p>
+        <a href="/book" class="btn btn-secondary">Book Appointment</a>
+    </div>
+</div>
+{% endblock %}
